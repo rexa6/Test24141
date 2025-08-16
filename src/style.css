@@ -14,14 +14,10 @@ html, body {
 }
 
 #app {
-  width: 375px;
-  height: 812px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  overflow: hidden;
 }
-
 
 ::-webkit-scrollbar {
   width: 0;
