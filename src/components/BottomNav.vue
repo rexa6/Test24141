@@ -39,7 +39,7 @@ function setTab(tabName) {
   bottom: 20px;
   left: 20px;
   right: 20px;
-  background: rgba(40, 40, 40, 0.9);
+  background: rgba(40, 40, 40, 0.5);
   border-radius: 25px;
   padding: 12px;
   display: flex;
@@ -47,7 +47,7 @@ function setTab(tabName) {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
   z-index: 10;
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .nav ul {
@@ -93,7 +93,7 @@ function setTab(tabName) {
 .nav .icon {
   font-size: 24px;
   margin-bottom: 5px;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.5s ease;
 }
 
 .nav li:hover .icon,
@@ -102,7 +102,7 @@ function setTab(tabName) {
 }
 
 .nav .label {
-  transition: all 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .nav li.active .label {

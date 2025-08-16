@@ -28,7 +28,6 @@ const componentsMap = {
 <style>
 .app {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a0d2e 0%, #2a1a4d 100%);
   color: #fff;
   padding-bottom: 120px; /* чтобы таб-бар не перекрывал контент */
 }
