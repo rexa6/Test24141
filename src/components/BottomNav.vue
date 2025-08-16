@@ -108,9 +108,10 @@ function setTab(tabName) {
   font-weight: 700;
   color: #fff;
   text-shadow: 
-    0 0 8px rgba(85, 142, 209, 0.6),  /* мягкий голубой glow */
-    0 0 16px rgba(85, 142, 209, 0.4),
-    0 0 24px rgba(85, 142, 209, 0.2);
+    0 0 8px rgba(168, 85, 247, 0.6),  /* мягкий фиолетовый glow */
+    0 0 16px rgba(168, 85, 247, 0.4),
+    0 0 24px rgba(168, 85, 247, 0.2);
   transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
+
 </style>
