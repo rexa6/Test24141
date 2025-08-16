@@ -104,9 +104,13 @@ function setTab(tabName) {
 .nav .label {
     transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-
 .nav li.active .label {
   font-weight: 700;
   color: #fff;
+  text-shadow: 
+    0 0 8px rgba(85, 142, 209, 0.6),  /* мягкий голубой glow */
+    0 0 16px rgba(85, 142, 209, 0.4),
+    0 0 24px rgba(85, 142, 209, 0.2);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 </style>
