@@ -11,13 +11,19 @@ html, body {
   color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 
 #app {
-  min-height: 100vh;
+  width: 375px;
+  height: 812px;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 20px; 
 }
+
 
 ::-webkit-scrollbar {
   width: 0;
