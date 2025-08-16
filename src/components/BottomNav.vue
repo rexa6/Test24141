@@ -80,7 +80,7 @@ onMounted(() => {
 .nav li {
   flex: 1;
   text-align: center;
-  padding: 12px 0;
+  padding: 10px 0;
   cursor: pointer;
   display: flex;
   flex-direction: column;
