@@ -78,16 +78,16 @@ function setTab(tabName) {
 }
 
 .nav li:hover {
-  color: #fff;
+  color: #b0b0b0;
   background: rgba(255, 255, 255, 0.08);
   z-index: 2; /* Повышаем z-index при наведении */
 }
 
 .nav li.active {
   background: linear-gradient(135deg, #3a3a3c, #2a2a2c);
-  color: #fff;
+  color: #b0b0b0;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
-  z-index: 3; /* Еще выше z-index для активной кнопки */
+  z-index: 3;
 }
 
 .nav .icon {
@@ -98,7 +98,7 @@ function setTab(tabName) {
 
 .nav li:hover .icon,
 .nav li.active .icon {
-  transform: translateY(-2px); /* Убираем scale для иконки */
+  transform: translateY(-2px);
 }
 
 .nav .label {
@@ -106,9 +106,9 @@ function setTab(tabName) {
 }
 .nav li.active .label {
   font-weight: 700;
-  color: #fff;
+  color: #b0b0b0;
   text-shadow: 
-    0 0 8px rgba(168, 85, 247, 0.6),  /* мягкий фиолетовый glow */
+    0 0 8px rgba(168, 85, 247, 0.6),
     0 0 16px rgba(168, 85, 247, 0.4),
     0 0 24px rgba(168, 85, 247, 0.2);
   transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
