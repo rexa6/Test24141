@@ -60,8 +60,8 @@ onMounted(() => {
 .nav {
   position: fixed;
   bottom: 40px;
-  left: 40px;
-  right: 40px;
+  left: 25px;
+  right: 25px;
   background: rgba(42, 26, 77, 0.9);
   backdrop-filter: blur(10px);
   border-radius: 20px;
