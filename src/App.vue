@@ -3,14 +3,14 @@ import { ref } from "vue";
 import BottomNav from "./components/BottomNav.vue";
 
 import Upgrade from "./components/Upgrade.vue";
-import Flip from "./components/Flip.vue";
+import Battle from "./components/Battle.vue";
 import Profile from "./components/Profile.vue";
 
 const activeTab = ref("Upgrade");
 
 const componentsMap = {
   Upgrade,
-  Flip,
+  Battle,
   Profile
 };
 </script>
@@ -29,6 +29,6 @@ const componentsMap = {
 .app {
   min-height: 100vh;
   color: #fff;
-  padding-bottom: 120px; /* чтобы таб-бар не перекрывал контент */
+  padding-bottom: 120px;
 }
 </style>

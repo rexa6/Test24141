@@ -6,10 +6,11 @@ const props = defineProps({
 });
 const emit = defineEmits(["update:activeTab"]);
 
+// Пути к SVG в папке public
 const tabs = [
-  { name: "Flip", icon: "🏠" },
-  { name: "Upgrade", icon: "⚡" },
-  { name: "Profile", icon: "👤" }
+  { name: "Battle", icon: "/battle.svg" },
+  { name: "Upgrade", icon: "/upgrade.svg" },
+  { name: "Profile", icon: "/profile.svg" }
 ];
 
 function setTab(tabName) {
@@ -26,7 +27,9 @@ function setTab(tabName) {
         @click="setTab(tab.name)"
         :class="{ active: tab.name === activeTab }"
       >
-        <span class="icon">{{ tab.icon }}</span>
+        <span class="icon">
+          <img :src="tab.icon" :alt="tab.name" />
+        </span>
         <span class="label">{{ tab.name }}</span>
       </li>
     </ul>
@@ -61,7 +64,7 @@ function setTab(tabName) {
 
 .nav li {
   flex: 1;
-  margin: 0 5px; /* Уменьшаем margin, так как используем gap */
+  margin: 0 5px;
   text-align: center;
   padding: 12px 0;
   cursor: pointer;
@@ -74,13 +77,13 @@ function setTab(tabName) {
   border-radius: 20px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  z-index: 1; /* Базовый z-index для всех кнопок */
+  z-index: 1;
 }
 
 .nav li:hover {
   color: #b0b0b0;
   background: rgba(255, 255, 255, 0.08);
-  z-index: 2; /* Повышаем z-index при наведении */
+  z-index: 2;
 }
 
 .nav li.active {
@@ -93,17 +96,28 @@ function setTab(tabName) {
 .nav .icon {
   font-size: 24px;
   margin-bottom: 5px;
-  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.nav li:hover .icon,
-.nav li.active .icon {
+.nav .icon img {
+  width: 28px;
+  height: 28px;
+  filter: brightness(1.5);
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), filter 0.5s ease;
+}
+
+.nav li:hover .icon img,
+.nav li.active .icon img {
   transform: translateY(-2px);
+  filter: brightness(1.8);
 }
 
 .nav .label {
-    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
+
 .nav li.active .label {
   font-weight: 700;
   color: #b0b0b0;
@@ -111,7 +125,5 @@ function setTab(tabName) {
     0 0 8px rgba(168, 85, 247, 0.6),
     0 0 16px rgba(168, 85, 247, 0.4),
     0 0 24px rgba(168, 85, 247, 0.2);
-  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-
 </style>
