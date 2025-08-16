@@ -1,5 +1,5 @@
 <script setup>
-import { ref, nextTick, onMounted } from "vue";
+import { ref } from "vue";
 
 const props = defineProps({
   activeTab: String
@@ -7,30 +7,14 @@ const props = defineProps({
 const emit = defineEmits(["update:activeTab"]);
 
 const tabs = [
+  { name: "Flip", icon: "🏠" },
   { name: "Upgrade", icon: "⚡" },
-  { name: "Flip", icon: "🔥" },
-  { name: "Minki", icon: "🚀" },
   { name: "Profile", icon: "👤" }
 ];
 
-const tabWidths = ref([]);
-const tabOffsets = ref([]);
-
 function setTab(tabName) {
   emit("update:activeTab", tabName);
-  nextTick(() => updateIndicator());
 }
-
-function updateIndicator() {
-  const liElements = document.querySelectorAll(".nav li");
-  tabWidths.value = Array.from(liElements).map(el => el.offsetWidth);
-  tabOffsets.value = Array.from(liElements).map(el => el.offsetLeft);
-}
-
-onMounted(() => {
-  updateIndicator();
-  window.addEventListener("resize", updateIndicator);
-});
 </script>
 
 <template>
@@ -46,28 +30,24 @@ onMounted(() => {
         <span class="label">{{ tab.name }}</span>
       </li>
     </ul>
-    <div
-      class="indicator"
-      :style="{
-        width: tabWidths[tabs.findIndex(t => t.name === activeTab)] - 12 + 'px',
-        left: tabOffsets[tabs.findIndex(t => t.name === activeTab)] + 6 + 'px'
-      }"
-    ></div>
   </nav>
 </template>
 
 <style scoped>
 .nav {
   position: fixed;
-  bottom: 40px;
+  bottom: 20px;
   left: 20px;
   right: 20px;
-  background: rgba(42, 26, 77, 0.9);
+  background: rgba(40, 40, 40, 0.9);
+  border-radius: 25px;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  padding: 10px 0;
   z-index: 10;
+  transition: all 0.3s ease;
 }
 
 .nav ul {
@@ -75,52 +55,58 @@ onMounted(() => {
   list-style: none;
   margin: 0;
   padding: 0;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .nav li {
   flex: 1;
+  margin: 0 5px; /* Уменьшаем margin, так как используем gap */
   text-align: center;
-  padding: 10px 0;
+  padding: 12px 0;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.3s ease, color 0.3s ease;
+  font-weight: 600;
+  font-size: 14px;
+  color: #b0b0b0;
+  border-radius: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1; /* Базовый z-index для всех кнопок */
 }
 
 .nav li:hover {
-  transform: translateY(-4px);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  z-index: 2; /* Повышаем z-index при наведении */
 }
 
 .nav li.active {
-  color: #f107a3;
-  transform: scale(1.1);
+  background: linear-gradient(135deg, #3a3a3c, #2a2a2c);
+  color: #fff;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+  z-index: 3; /* Еще выше z-index для активной кнопки */
 }
 
 .nav .icon {
   font-size: 24px;
-  margin-bottom: 6px;
-  transition: transform 0.3s ease;
+  margin-bottom: 5px;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.nav li:hover .icon {
-  transform: scale(1.2);
+.nav li:hover .icon,
+.nav li.active .icon {
+  transform: translateY(-2px); /* Убираем scale для иконки */
 }
 
 .nav .label {
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
 }
 
-.indicator {
-  position: absolute;
-  top: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #f107a3, #00ddeb);
-  border-radius: 2px;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  box-shadow: 0 0 15px rgba(241, 7, 163, 0.7);
+.nav li.active .label {
+  font-weight: 700;
+  color: #fff;
 }
 </style>

@@ -2,10 +2,8 @@
 import { ref } from "vue";
 import BottomNav from "./components/BottomNav.vue";
 
-// Импортируем страницы
 import Upgrade from "./components/Upgrade.vue";
 import Flip from "./components/Flip.vue";
-import Minki from "./components/Minki.vue";
 import Profile from "./components/Profile.vue";
 
 const activeTab = ref("Upgrade");
@@ -13,7 +11,6 @@ const activeTab = ref("Upgrade");
 const componentsMap = {
   Upgrade,
   Flip,
-  Minki,
   Profile
 };
 </script>
